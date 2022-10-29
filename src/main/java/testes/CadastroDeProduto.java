@@ -12,6 +12,11 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
     public static void main(String[] args) {
         cadastrarProduto();
+        Long id = 1l;
+        EntityManager em = JpaUtil.getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(em);
+
+
     }
 
 

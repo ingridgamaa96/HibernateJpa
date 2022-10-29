@@ -8,18 +8,22 @@ import utilJpa.JpaUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastroDeProduto {
     public static void main(String[] args) {
         cadastrarProduto();
-        Long id = 1l;
+
         EntityManager em = JpaUtil.getEntityManager();
         ProdutoDao produtoDao = new ProdutoDao(em);
 
+        Produto p = produtoDao.buscarPorId(1l);
+        System.out.println(p.getPreco());
+
+        List<Produto> todosProdutos = produtoDao.buscarTodos();
+        todosProdutos.forEach(p2 -> System.out.println(p.getNome()));
 
     }
-
-
         private static void cadastrarProduto () {
             Categoria celulares = new Categoria("CELULARES");
             Produto celular = new Produto("Xiaomi Redmi 9"
